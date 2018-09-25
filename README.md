@@ -44,3 +44,23 @@ WHERE
 GROUP BY 1
 ORDER BY count DESC
 ```
+3. Return a list of stations with a count of number of trips starting at that station but ordered by dock count.
+
+```
+SELECT
+	trips.start_station,
+	stations.dockcount,
+	COUNT(*) AS trip_count
+FROM
+	trips
+JOIN
+	stations
+ON
+	stations.name = trips.start_station
+GROUP BY 1,2
+ORDER BY
+	dockcount
+DESC
+```
+
+4. (Challenge) What's the length of the longest trip for each day it rains anywhere?
