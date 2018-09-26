@@ -96,3 +96,4 @@ ON
 GROUP BY 1,2	
 	
 ```
+I got this to work where I could see one highest duration per date. But if I bring back in trip_id I end up seeing too many per day. How should I bring back in the trip id without messing up my maximum? 
