@@ -64,3 +64,36 @@ DESC
 ```
 
 4. (Challenge) What's the length of the longest trip for each day it rains anywhere?
+```
+WITH
+	short_dates
+AS (
+SELECT
+	substring(start_date from 1 for 10) short,
+	duration,
+	trip_id
+FROM
+	trips),
+rainy AS (
+SELECT
+	date,
+	events
+FROM
+	weather
+WHERE
+	events LIKE 'Rain')
+
+SELECT
+	rainy.date,
+	rainy.events,
+	short_dates.short,
+	MAX(short_dates.duration) longest,
+	short_dates.trip_id
+FROM
+	short_dates
+JOIN
+	rainy
+ON
+	rainy.date = short_dates.short
+	
+```
