@@ -86,14 +86,13 @@ WHERE
 SELECT
 	rainy.date,
 	rainy.events,
-	short_dates.short,
-	MAX(short_dates.duration) longest,
-	short_dates.trip_id
+	MAX(short_dates.duration) longest
 FROM
 	short_dates
 JOIN
 	rainy
 ON
 	rainy.date = short_dates.short
+GROUP BY 1,2	
 	
 ```
